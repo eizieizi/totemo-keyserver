@@ -1,0 +1,14 @@
+h1 {
+    font-size: larger;
+    color: #238bbb;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#main {
+    width: 750px;
+    height: 400px;
+    left: 20px;
+    top: 20px;
+    position: relative;
+}

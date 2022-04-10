@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+
+<div id="main">
+  <h1> Public Key Abfrage für E-Mail Verschlüsselung </h1>
+  <br>
+  
+  <form action="/pubkey" method="post">
+
+    <div class="form-group">
+      <label for="Username:">E-Mail: </label>
+      <input type="text" class="form-control" name="email" placeholder="Bitte E-Mailadresse eines Mitarbeites eingeben, dessen öffentlichen Schlüssel Sie benötigen">
+
+      <br>
+
+        <label for="exampleFormControlSelect1">Schlüsselart auswählen: </label>
+        <select class="form-control" name="keytype" id="exampleFormControlSelect1">
+          <option>SMIME</option>
+          <option>PGP</option>
+        </select>
+
+      <br>
+      <button type="submit" class="btn btn-primary"> Jetzt Abfragen </button>
+  </div>
+</div>
+{%endblock%}

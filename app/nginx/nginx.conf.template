@@ -1,0 +1,25 @@
+#The docker container has a entrypoint script which converts the variables from the enviroment variables to a fresh config file. 
+
+server {
+    # Listen to port 443 on both IPv4 and IPv6.
+    listen 80;
+    listen 443 ssl default_server reuseport;
+    listen [::]:443 ssl default_server reuseport;
+
+    # Domain names this server should respond to.
+    server_name ${SERVER_NAME};
+
+    # Load the certificate files.
+    ssl_certificate         /etc/letsencrypt/live/${SERVER_NAME}/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/${SERVER_NAME}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/${SERVER_NAME}/chain.pem;
+
+    # Load the Diffie-Hellman parameter.
+    ssl_dhparam /etc/letsencrypt/dhparams/dhparam.pem;
+
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass flask:8080;
+    }
+}
