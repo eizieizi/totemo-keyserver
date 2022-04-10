@@ -99,10 +99,8 @@ services:
     build: ./flask
     container_name: flask
     restart: unless-stopped
-    environment:
-      - TOTEMO_USERNAME=tbd
-      - TOTEMO_PASSWORD=tbd
-      - TOTEMO_BASEURL=https://totemo01.example.com:8444
+    env_file:
+      - ./creds.env
 
     ports:
       - 8080:8080
@@ -129,9 +127,14 @@ services:
 volumes:
 ```
 
+You also need to create a file called creds.env in the same directory where the docker-compose.yaml is located. It is a separate file, specified in .gitignore to prevent commit to github. 
 
+```docker
+TOTEMO_USERNAME=tbd
+TOTEMO_PASSWORD=tbd
+TOTEMO_BASEURL=tbd
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
